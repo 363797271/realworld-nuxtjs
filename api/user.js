@@ -1,6 +1,6 @@
-// 用户模块
 import request from '@/utils/request'
 
+// 用户模块
 // 用户登录
 export const login = data => {
   return request({

@@ -35,13 +35,14 @@
 
           <div class="article-preview">
             <div class="article-meta">
-              <a href=""><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
+              <a href=""><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
               <div class="info">
                 <a href="" class="author">Eric Simons</a>
                 <span class="date">January 20th</span>
               </div>
               <button class="btn btn-outline-primary btn-sm pull-xs-right">
-                <i class="ion-heart"></i> 29
+                <i class="ion-heart"></i>
+                29
               </button>
             </div>
             <a href="" class="preview-link">
@@ -53,13 +54,14 @@
 
           <div class="article-preview">
             <div class="article-meta">
-              <a href=""><img src="http://i.imgur.com/N4VcUeJ.jpg"/></a>
+              <a href=""><img src="http://i.imgur.com/N4VcUeJ.jpg" /></a>
               <div class="info">
                 <a href="" class="author">Albert Pai</a>
                 <span class="date">January 20th</span>
               </div>
               <button class="btn btn-outline-primary btn-sm pull-xs-right">
-                <i class="ion-heart"></i> 32
+                <i class="ion-heart"></i>
+                32
               </button>
             </div>
             <a href="" class="preview-link">
@@ -83,7 +85,8 @@
 
 <script>
 export default {
-  name: 'profile'
+  name: 'profile',
+  middleware: 'auth'
 }
 </script>
 
