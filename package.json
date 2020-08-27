@@ -1,0 +1,16 @@
+{
+  "name": "realworld-nuxtjs",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "keywords": [],
+  "author": "zyd <363797271@qq.me> (https://github.com/363797271)",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "nuxt": "^2.14.3"
+  }
+}
