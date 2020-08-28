@@ -26,7 +26,7 @@ export const getYourFeedArticles = params => {
 export const addFavorite = slug => {
   return request({
     method: 'POST',
-    url: '/api/articles/${slug}/favorite'
+    url: `/api/articles/${slug}/favorite`
   })
 }
 
@@ -34,7 +34,7 @@ export const addFavorite = slug => {
 export const deleteFavorite = slug => {
   return request({
     method: 'DELETE',
-    url: '/api/articles/${slug}/favorite'
+    url: `/api/articles/${slug}/favorite`
   })
 }
 
@@ -42,7 +42,7 @@ export const deleteFavorite = slug => {
 export const getArticle = slug => {
   return request({
     method: 'GET',
-    url: '/api/articles/${slug}'
+    url: `/api/articles/${slug}`
   })
 }
 
@@ -50,6 +50,6 @@ export const getArticle = slug => {
 export const getComments = slug => {
   return request({
     method: 'GET',
-    url: '/api/articles/${slug}/comments'
+    url: `/api/articles/${slug}/comments`
   })
 }

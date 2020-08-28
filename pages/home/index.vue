@@ -208,7 +208,8 @@ export default {
       getTags()
     ])
     const { articles, articlesCount } = articleRes.data
-    const { tags } = tagRes.data
+    let { tags } = tagRes.data
+    tags = tags.slice(0, 20) // 数量太多，限制一下
 
     // 增加点赞控制属性
     articles.forEach(article => {

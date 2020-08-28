@@ -1,19 +1,26 @@
-
 // 仅在服务端加载 cookieparser 包
 const cookieparser = process.server ? require('cookieparser') : undefined
+// 仅在客户端加载 js-cookie 包
+const Cookie = process.client ? require('js-cookie') : undefined
 
 // 在服务端渲染期间运行的都是同一个实例
 // 为了防止数据冲突，务必要把 state 定义成一个函数，返回数据对象
 export const state = () => {
   return {
     // 当前登录用户的登录状态
-    user: null,
+    user: null
   }
 }
 
 export const mutations = {
-  setUser(state,data) {
+  setUser(state, data) {
     state.user = data
+  },
+
+  // 退出登录
+  logOut(state) {
+    state.user = null
+    Cookie.remove('user')
   }
 }
 
@@ -36,5 +43,5 @@ export const actions = {
     }
 
     commit('setUser', user)
-  },
+  }
 }

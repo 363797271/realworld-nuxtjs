@@ -58,5 +58,13 @@ module.exports = {
   },
 
   // 注册插件
-  plugins: ['~/plugins/request.js', '~/plugins/dayjs.js']
+  plugins: ['~/plugins/request.js', '~/plugins/dayjs.js'],
+
+  // 服务端环境配置
+  server: {
+    // 默认localhost 只能本地访问
+    // 若想要对外访问，要配置为 0.0.0.0
+    host: '',
+    port: 3000 // 默认3000
+  }
 }

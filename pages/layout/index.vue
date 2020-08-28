@@ -27,6 +27,11 @@
                 {{ user.username }}
               </nuxt-link>
             </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" @click.prevent="logOut">
+                <i class="ion-log-out"></i>
+              </a>
+            </li>
           </template>
           <template v-else>
             <li class="nav-item">
@@ -63,6 +68,12 @@ export default {
   name: 'LayoutIndex',
   computed: {
     ...mapState(['user'])
+  },
+  methods: {
+    async logOut() {
+      this.$store.commit('logOut')
+      this.$router.push('/')
+    }
   }
 }
 </script>

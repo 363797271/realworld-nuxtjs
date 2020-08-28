@@ -1,4 +1,4 @@
-import request from '@/plugins/request'
+import { request } from '@/plugins/request'
 
 // 用户模块
 // 用户登录
@@ -14,7 +14,7 @@ export const login = data => {
 export const register = data => {
   return request({
     method: 'POST',
-    url: '/api/users/register',
+    url: '/api/users',
     data
   })
 }

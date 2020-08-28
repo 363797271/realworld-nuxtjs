@@ -47,7 +47,7 @@ export default {
 
     // 创建markdown渲染器
     const md = new MarkdownIt()
-    article.body = md(article.body)
+    article.body = md.render(article.body)
 
     return {
       article
