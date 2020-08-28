@@ -3,11 +3,14 @@
  */
 import axios from 'axios'
 
-const request = axios.create({
-  baseURL: 'https://conduit.productionready.io'
+export const request = axios.create({
+  // baseURL: 'https://conduit.productionready.io',
+  baseURL: 'http://realworld.api.fed.lagounews.com',
+  timeout: 5000
 })
 
 // 通过插件机制获取上下文对象（query、params、req、res、app、store）
+// 插件导出函数必须作为 default 陈成员
 export default ({ store }) => {
   // 请求拦截器
   // Add a request interceptor
@@ -18,7 +21,7 @@ export default ({ store }) => {
       // 请求就会经过这里
       // Do something before request is sent
 
-      const { user } = store.user
+      const { user } = store
 
       if (user && user.token) {
         config.headers.Authorization = `Token ${user.token}`

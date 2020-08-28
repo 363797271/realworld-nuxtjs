@@ -93,13 +93,17 @@
                 >
                   {{ article.author.username }}
                 </nuxt-link>
-                <span class="date">{{ article.createdAt }}</span>
+                <span class="date">
+                  {{ article.createdAt | date('MMM DD, YYYY') }}
+                </span>
               </div>
               <button
                 class="btn btn-outline-primary btn-sm pull-xs-right"
                 :class="{
                   active: article.favorited
                 }"
+                @click="onFavorite(article)"
+                :disabled="article.favoriteDisabled"
               >
                 <i class="ion-heart"></i>
                 {{ article.favoritesCount }}
@@ -177,12 +181,17 @@
 </template>
 
 <script>
-import { getArticles, getYourFeedArticles } from '@/api/article'
+import {
+  getArticles,
+  getYourFeedArticles,
+  addFavorite,
+  deleteFavorite
+} from '@/api/article'
 import { getTags } from '@/api/tag'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'home',
+  name: 'HomeIndex',
   async asyncData({ query }) {
     const page = Number.parseInt(query.page || 1)
     const limit = 20
@@ -201,9 +210,14 @@ export default {
     const { articles, articlesCount } = articleRes.data
     const { tags } = tagRes.data
 
+    // 增加点赞控制属性
+    articles.forEach(article => {
+      article.favoriteDisabled = false
+    })
+
     return {
-      articles: data.articles, // 文章列表
-      articlesCount: data.articlesCount, // 文章总数
+      articles, // 文章列表
+      articlesCount, // 文章总数
       tags, // 标签列表
       limit, // 每页大小
       page, // 页码
@@ -215,6 +229,23 @@ export default {
     ...mapState(['user']),
     totalPage() {
       return Math.ceil(this.articlesCount / this.limit)
+    }
+  },
+  methods: {
+    async onFavorite(article) {
+      article.favoriteDisabled = true
+      if (article.favorited) {
+        // 取消点赞
+        await deleteFavorite(article.slug)
+        article.favorited = false
+        article.favoritesCount += -1
+      } else {
+        // 添加点赞
+        await addFavorite(article.slug)
+        article.favorited = true
+        article.favoritesCount += 1
+      }
+      article.favoriteDisabled = false
     }
   },
   watchQuery: ['page', 'tag', 'tab']

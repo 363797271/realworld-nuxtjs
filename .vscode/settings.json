@@ -1,0 +1,17 @@
+{
+  // 控制编辑器在键入一行后是否自动格式化该行
+  "editor.formatOnType": true,
+  // 在保存时格式化文件。格式化程序必须可用，延迟后文件不能保存，并且编辑器不能关闭
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 在保存时运行的代码操作类型
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.fixAll.stylelint": true
+  },
+}
