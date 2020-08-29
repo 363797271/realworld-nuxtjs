@@ -60,11 +60,19 @@ module.exports = {
   // 注册插件
   plugins: ['~/plugins/request.js', '~/plugins/dayjs.js'],
 
+  // 跨域配置（解决vercel部署为https站点，请求http接口失败的问题）
+  // modules: ['@nuxtjs/axios', '@nuxtjs/proxy'],
+  // proxy: {
+  //   '/api': 'http://realworld.api.fed.lagounews.com'
+  // },
+
   // 服务端环境配置
   server: {
     // 默认localhost 只能本地访问
     // 若想要对外访问，要配置为 0.0.0.0
-    host: '',
-    port: 3000 // 默认3000
+    // host: '0.0.0.0',
+    // nuxtjs 默认 3000
+    // vercel 默认80
+    port: 3000
   }
 }

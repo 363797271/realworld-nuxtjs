@@ -12,6 +12,8 @@
   "author": "zyd <363797271@qq.me> (https://github.com/363797271)",
   "license": "MIT",
   "dependencies": {
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/proxy": "^2.0.1",
     "axios": "^0.20.0",
     "cookieparser": "^0.1.0",
     "dayjs": "^1.8.34",

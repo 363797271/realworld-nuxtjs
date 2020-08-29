@@ -4,6 +4,7 @@
 import axios from 'axios'
 
 export const request = axios.create({
+  // baseURL: 'https://realworld-nuxtjs-five.vercel.app', // vercel 部署站点地址
   // baseURL: 'https://conduit.productionready.io',
   baseURL: 'http://realworld.api.fed.lagounews.com',
   timeout: 5000
