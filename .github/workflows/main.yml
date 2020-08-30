@@ -34,3 +34,4 @@ jobs:
           script: |
             whoami
             ls -a
+            echo $PATH
