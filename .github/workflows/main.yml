@@ -77,5 +77,8 @@ jobs:
             cd /root/realworld-nuxtjs
             wget https://github.com/lipengzhou/realworld-nuxtjs/releases/latest/download/release.tgz -O release.tgz
             tar zxvf release.tgz
+            node -v
+            npm -v
+            pm2 -v
             npm install --production
             pm2 reload pm2.config.json
