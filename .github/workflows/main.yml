@@ -32,7 +32,6 @@ jobs:
           # 4. 安装生产环境依赖
           # 5. pm2运行配置文件
           script: |
-            cd /root/.nvm/versions/node/v12.17.0/bin
-            ./npm -v
-            ./pm2 -v
-            ls -a
+            export PATH=/root/.nvm/versions/node/v12.17.0/bin:$PATH
+            npm -v
+            pm2 -v
