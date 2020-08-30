@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-deploy:
     # 运行环境
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     # 执行的步骤
     steps:
       # 部署到服务器
@@ -32,5 +32,7 @@ jobs:
           # 4. 安装生产环境依赖
           # 5. pm2运行配置文件
           script: |
-            echo $PATH
+            /root/.nvm/versions/node/v12.17.0/bin/npm -v
+            /root/.nvm/versions/node/v12.17.0/bin/pm2 -v
+            cd /root/.nvm/versions/node/v12.17.0/bin
             ls -a
