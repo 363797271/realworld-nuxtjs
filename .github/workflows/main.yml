@@ -23,6 +23,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           # 远程服务器端口号
           port: ${{ secrets.PORT }}
+          # 命令超时配置
+          command_timeout: 5m
           # 运行在远程服务器的命令
           # 1. 进入项目目录
           # 2. 下载发布包
@@ -30,4 +32,5 @@ jobs:
           # 4. 安装生产环境依赖
           # 5. pm2运行配置文件
           script: |
-            whereis node
+            whoami
+            ls -a
