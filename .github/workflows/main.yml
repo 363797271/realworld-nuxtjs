@@ -74,9 +74,9 @@ jobs:
           # 4. 安装生产环境依赖
           # 5. pm2运行配置文件
           script: |
-            cd /root/realworld-nuxtjs
-            wget https://github.com/lipengzhou/realworld-nuxtjs/releases/latest/download/release.tgz -O release.tgz
-            tar zxvf release.tgz
             whereis node
-            npm install --production
-            pm2 reload pm2.config.json
+          # cd /root/realworld-nuxtjs
+          # wget https://github.com/lipengzhou/realworld-nuxtjs/releases/latest/download/release.tgz -O release.tgz
+          # tar zxvf release.tgz
+          # npm install --production
+          # pm2 reload pm2.config.json
