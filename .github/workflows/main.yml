@@ -67,6 +67,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           # 远程服务器端口号
           port: ${{ secrets.PORT }}
+          command_timeout: 20m
           # 运行在远程服务器的命令
           # 0. 手动添加环境变量（此任务中PATH环境变量一直是初始值，没找到原因）
           # 1. 进入项目目录
