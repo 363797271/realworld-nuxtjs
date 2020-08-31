@@ -10,10 +10,19 @@ export const getArticles = params => {
 }
 
 // 新建文章
-export const createArticles = data => {
+export const createArticle = data => {
   return request({
     method: 'POST',
     url: '/api/articles',
+    data
+  })
+}
+
+// 修改文章
+export const updateArticle = (data, slug) => {
+  return request({
+    method: 'PUT',
+    url: `/api/articles/${slug}`,
     data
   })
 }

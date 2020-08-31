@@ -3,13 +3,15 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-10 offset-md-1 col-xs-12">
-          <div class="ng-isolate-scope" v-show="errors.length > 0">
-            <ul class="error-messages">
-              <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-            </ul>
-          </div>
+          <ul class="error-messages">
+            <template v-for="(messages, field) in errors">
+              <li v-for="(message, index) in messages" :key="field + index">
+                {{ field }} {{ message }}
+              </li>
+            </template>
+          </ul>
 
-          <form @submit="onSubmit">
+          <form>
             <fieldset>
               <fieldset class="form-group">
                 <input
@@ -45,8 +47,10 @@
                 <div class="tag-list"></div>
               </fieldset>
               <button
+                @click.prevent="onSubmit"
                 class="btn btn-lg pull-xs-right btn-primary"
                 type="button"
+                :disabled="disabled"
               >
                 Publish Article
               </button>
@@ -59,7 +63,7 @@
 </template>
 
 <script>
-import { createArticles } from '@/api/article'
+import { createArticle, getArticle, updateArticle } from '@/api/article'
 export default {
   name: 'EditorIndex',
 
@@ -68,7 +72,9 @@ export default {
 
   data() {
     return {
-      errors: [],
+      slug: this.$route.params.slug,
+      errors: {},
+      disabled: false,
       tagStr: '',
       article: {
         title: '',
@@ -78,13 +84,47 @@ export default {
       }
     }
   },
+  async created() {
+    if (this.slug) {
+      try {
+        const { data } = await getArticle(this.slug)
+        this.article = data.article
+      } catch (err) {
+        this.$router.push({
+          name: 'editor'
+        })
+      }
+    }
+  },
   methods: {
     async onSubmit() {
-      this.article.tagList = this.tagStr.split(',')
-      const { data } = await createArticles({
-        article: this.article
-      })
-      console.log(data)
+      this.disabled = true
+      try {
+        const request = this.slug ? updateArticle : createArticle
+        const { data } = await request(
+          {
+            article: this.article
+          },
+          this.slug
+        )
+        const { slug } = data.article
+        this.$router.push({
+          name: 'article',
+          params: {
+            slug
+          }
+        })
+      } catch (err) {
+        const { data = {} } = err.response || {}
+        const { errors = {} } = data
+        this.errors = errors || []
+      }
+      this.disabled = false
+    }
+  },
+  watch: {
+    tagStr(val) {
+      this.article.tagList = this.tagStr ? this.tagStr.split(',') : []
     }
   }
 }

@@ -17,7 +17,7 @@
 
           <ul class="error-messages">
             <template v-for="(messages, field) in errors">
-              <li v-for="(message, index) in messages" :key="index">
+              <li v-for="(message, index) in messages" :key="field + index">
                 {{ field }} {{ message }}
               </li>
             </template>
@@ -100,7 +100,7 @@ export default {
               user: this.user
             })
 
-        console.log(data)
+        // console.log(data)
         // TODO：保存用户的登录状态
         this.$store.commit('setUser', data.user)
         // 为了防止刷新页面数据丢失，需要把数据持久化
@@ -108,7 +108,6 @@ export default {
         // 跳转到首页
         this.$router.push('/')
       } catch (err) {
-        console.dir(err)
         const { data = {} } = err.response || {}
         const { errors = {} } = data
         this.errors = errors

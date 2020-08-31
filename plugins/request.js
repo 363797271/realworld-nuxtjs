@@ -5,8 +5,8 @@ import axios from 'axios'
 
 export const request = axios.create({
   // baseURL: 'https://realworld-nuxtjs-five.vercel.app', // vercel 部署站点地址
-  // baseURL: 'https://conduit.productionready.io',
-  baseURL: 'http://realworld.api.fed.lagounews.com',
+  baseURL: 'https://conduit.productionready.io',
+  // baseURL: 'http://realworld.api.fed.lagounews.com',
   timeout: 5000
 })
 
@@ -34,6 +34,16 @@ export default ({ store }) => {
     function(error) {
       // 如果请求失败（此时请求还没有发出去），就会进入这里
       // Do something with request error
+      return Promise.reject(error)
+    }
+  )
+
+  // Add a response interceptor
+  request.interceptors.response.use(
+    function(response) {
+      return response
+    },
+    function(error) {
       return Promise.reject(error)
     }
   )
