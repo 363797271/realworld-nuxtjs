@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <div class="banner">
+    <div class="banner" v-if="!user">
       <div class="container">
         <h1 class="logo-font">conduit</h1>
         <p>A place to share your knowledge.</p>
@@ -64,6 +64,9 @@
             </ul>
           </div>
 
+          <div class="article-preview" v-if="articles.length == 0">
+            No articles are here... yet.
+          </div>
           <!-- 文章列表 -->
           <div
             class="article-preview"
@@ -121,6 +124,15 @@
               <h1>{{ article.title }}</h1>
               <p>{{ article.description }}</p>
               <span>Read more...</span>
+              <ul class="tag-list">
+                <li
+                  class="tag-default tag-pill tag-outline"
+                  v-for="tag in article.tagList"
+                  :key="tag"
+                >
+                  {{ tag }}
+                </li>
+              </ul>
             </nuxt-link>
           </div>
 

@@ -3,13 +3,20 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-10 offset-md-1 col-xs-12">
-          <form>
+          <div class="ng-isolate-scope" v-show="errors.length > 0">
+            <ul class="error-messages">
+              <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+            </ul>
+          </div>
+
+          <form @submit="onSubmit">
             <fieldset>
               <fieldset class="form-group">
                 <input
                   type="text"
                   class="form-control form-control-lg"
                   placeholder="Article Title"
+                  v-model="article.title"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -17,6 +24,7 @@
                   type="text"
                   class="form-control"
                   placeholder="What's this article about?"
+                  v-model="article.description"
                 />
               </fieldset>
               <fieldset class="form-group">
@@ -24,6 +32,7 @@
                   class="form-control"
                   rows="8"
                   placeholder="Write your article (in markdown)"
+                  v-model="article.body"
                 ></textarea>
               </fieldset>
               <fieldset class="form-group">
@@ -31,6 +40,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Enter tags"
+                  v-model="tagStr"
                 />
                 <div class="tag-list"></div>
               </fieldset>
@@ -49,11 +59,34 @@
 </template>
 
 <script>
+import { createArticles } from '@/api/article'
 export default {
   name: 'EditorIndex',
 
   // 在路由匹配组件渲染之前会先执行中间件处理
-  middleware: 'auth'
+  middleware: 'auth',
+
+  data() {
+    return {
+      errors: [],
+      tagStr: '',
+      article: {
+        title: '',
+        description: '',
+        body: '',
+        tagList: []
+      }
+    }
+  },
+  methods: {
+    async onSubmit() {
+      this.article.tagList = this.tagStr.split(',')
+      const { data } = await createArticles({
+        article: this.article
+      })
+      console.log(data)
+    }
+  }
 }
 </script>
 
