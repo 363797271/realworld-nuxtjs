@@ -90,9 +90,7 @@ export default {
         const { data } = await getArticle(this.slug)
         this.article = data.article
       } catch (err) {
-        this.$router.push({
-          name: 'editor'
-        })
+        this.$error(err.message)
       }
     }
   },

@@ -92,7 +92,9 @@ export default {
     try {
       const { data } = await getUser()
       this.user = data.user
-    } catch (err) {}
+    } catch (err) {
+      this.$error(err.message)
+    }
     this.disabled = false
   },
   methods: {
@@ -108,7 +110,9 @@ export default {
             username: this.user.username
           }
         })
-      } catch (err) {}
+      } catch (err) {
+        this.$error(err.message)
+      }
       this.disabled = false
     },
     async logout() {

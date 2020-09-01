@@ -58,7 +58,11 @@ module.exports = {
   },
 
   // 注册插件
-  plugins: ['~/plugins/request.js', '~/plugins/dayjs.js'],
+  plugins: [
+    '~/plugins/request.js',
+    '~/plugins/dayjs.js',
+    '~/plugins/message.js'
+  ],
 
   // 跨域配置（解决vercel部署为https站点，请求http接口失败的问题）
   // modules: ['@nuxtjs/axios', '@nuxtjs/proxy'],

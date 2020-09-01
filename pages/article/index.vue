@@ -5,7 +5,7 @@
         <h1>{{ article.title }}</h1>
 
         <!-- 文章元信息 -->
-        <article-meta :article="article"></article-meta>
+        <ArticleMeta view="detail" :article="article" />
       </div>
     </div>
 
@@ -19,13 +19,13 @@
 
       <div class="article-actions">
         <!-- 文章元信息 -->
-        <article-meta :article="article"></article-meta>
+        <ArticleMeta view="detail" :article="article" />
       </div>
 
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">
           <!-- 评论提交和展示列表 -->
-          <article-components :article="article"></article-components>
+          <ArticleComments :article="article" />
         </div>
       </div>
     </div>
@@ -35,12 +35,12 @@
 <script>
 import { getArticle } from '@/api/article'
 import MarkdownIt from 'markdown-it'
-import ArticleMeta from './components/article-meta'
-import ArticleComponents from './components/article-components'
+import ArticleMeta from '@/pages/components/article/meta'
+import ArticleComments from './components/comments'
 
 export default {
   name: 'ArticleIndex',
-  components: { ArticleMeta, ArticleComponents },
+  components: { ArticleMeta, ArticleComments },
   async asyncData({ params }) {
     const { data } = await getArticle(params.slug)
     const { article } = data

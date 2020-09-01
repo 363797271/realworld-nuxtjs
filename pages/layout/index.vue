@@ -22,7 +22,7 @@
               </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" :to="`/@${user.username}`">
+              <nuxt-link class="nav-link" :to="`/profile/${user.username}`">
                 <img class="user-pic" :src="user.image" />
                 {{ user.username }}
               </nuxt-link>
@@ -72,7 +72,6 @@ export default {
   methods: {
     async logOut() {
       this.$store.commit('logOut')
-      this.$router.push('/')
     }
   }
 }
