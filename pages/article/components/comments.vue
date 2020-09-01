@@ -18,6 +18,7 @@
       </nuxt-link>
       to add comments on this article.
     </p>
+
     <form class="card comment-form" v-if="user">
       <div class="card-block">
         <textarea
@@ -28,7 +29,7 @@
         ></textarea>
       </div>
       <div class="card-footer">
-        <img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" />
+        <img :src="user.image" class="comment-author-img" />
         <button
           @click.prevent="addComment"
           :disabled="addDisabled"
@@ -139,6 +140,7 @@ export default {
         await addComment(this.article.slug, {
           comment: this.comment
         })
+        this.comment.body = ''
         this.init()
       } catch (err) {
         let msg = err.message

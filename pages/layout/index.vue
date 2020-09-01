@@ -72,6 +72,7 @@ export default {
   methods: {
     async logOut() {
       this.$store.commit('logOut')
+      this.$router.go(0)
     }
   }
 }
