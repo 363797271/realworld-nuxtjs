@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start"
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
   "keywords": [],
   "author": "zyd <363797271@qq.me> (https://github.com/363797271)",
