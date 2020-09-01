@@ -80,9 +80,9 @@ export default {
     return {
       disabled: false,
       user: {
-        username: 'zyd001', // zyd
-        email: 'zyd001@qq.com', // zyd001@qq.com
-        password: '12345678' // 12345678
+        username: '',
+        email: '',
+        password: ''
       },
       errors: {} // 错误信息
     }
@@ -101,7 +101,7 @@ export default {
             })
 
         // console.log(data)
-        // TODO：保存用户的登录状态
+        // 保存用户的登录状态
         this.$store.commit('setUser', data.user)
         // 为了防止刷新页面数据丢失，需要把数据持久化
         Cookie.set('user', data.user)
