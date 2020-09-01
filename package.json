@@ -9,7 +9,7 @@
     "start": "nuxt start"
   },
   "keywords": [],
-  "author": "zyd <363797271@qq.me> (https://github.com/363797271)",
+  "author": "zyd <363797271@qq.com> (https://github.com/363797271)",
   "license": "MIT",
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
@@ -19,9 +19,7 @@
     "dayjs": "^1.8.34",
     "js-cookie": "^2.2.1",
     "markdown-it": "^11.0.0",
-    "nuxt": "^2.14.3"
-  },
-  "devDependencies": {
+    "nuxt": "^2.14.3",
     "vue-m-message": "^3.0.0"
   }
 }
