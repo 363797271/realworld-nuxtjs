@@ -3,7 +3,6 @@
  */
 module.exports = {
   router: {
-    base: '/realworld-nuxtjs/',
     linkActiveClass: 'active',
     // 自定义路由表规则
     extendRoutes(routes, resolve) {
