@@ -19,6 +19,7 @@
     "dayjs": "^1.8.34",
     "js-cookie": "^2.2.1",
     "markdown-it": "^11.0.0",
+    "node-cmd": "^3.0.0",
     "nuxt": "^2.14.3",
     "vue-m-message": "^3.0.0"
   }
